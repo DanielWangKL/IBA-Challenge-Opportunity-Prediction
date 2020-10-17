@@ -1,7 +1,7 @@
 # International Business Analytics (IBA) Challenge - Opportunity Realization Prediction
 Participants of IBA are required to propose recommendations on how to leverage the wealth of data in AIESEC to achieve its business goal.
 
-One of the recommendation will be leveraging binary classification model to quantify the likelihood of realisation of each opportunity to allow the staff to optimise their marketing effort. Also, this model could also be leveraged to enhancement the intelligence of the online platform when promoting opportunities. This is to answer the second question from AIESEC which is listed in the background below.
+One of the recommendation will be leveraging binary classification model to quantify the likelihood of realisation of each opportunity to allow the staff to optimise their marketing effort. Also, this model could also be leveraged to enhance the intelligence of the online platform when promoting opportunities. This is to answer the second question from AIESEC which is listed in the background below.
 
 This repository will present the end-to-end machine learning process for the proof-of-concept of this recommendation.
 
