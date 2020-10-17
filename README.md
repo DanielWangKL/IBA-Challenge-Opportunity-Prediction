@@ -17,41 +17,45 @@ AIESEC currently has three main questions it would like you to answer using its 
 
 # Table of contents
 1. IBA_Basic_Data_Processing_v0.1.Rmd
-  - Description
-    - This script provides basic data processing for the opportunity and application tables. The processed document is further distributed for other teammates analysis and the ML feature engineering.
-  - Language: R
-  - Contents
-    - Data type conversion (e.g. factor -> date)
-    - Data filtering (e.g. NA, Null)
-    - Table creation (e.g. skills required in a string -> analysis ready table structure)
-    - New status creation by mapping to actual application process
+   - Description
+     - This script provides basic data processing for the opportunity and application tables. The processed document is further distributed for other teammates analysis and the ML feature engineering.
+   - Language: R
+   - Contents
+     - Data type conversion (e.g. factor -> date)
+     - Data filtering (e.g. NA, Null)
+     - Table creation (e.g. skills required in a string -> analysis ready table structure)
+     - New status creation by mapping to actual application process
+     
 2. IBA_Exploratory_Data_Analysis_v0.1.Rmd
-  - Description
-    - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
-  - Language: R
-  - Contents
-    - Status analysis
-    - Times series visualisation
-    - Realisation by different attributes
+   - Description
+     - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
+   - Language: R
+   - Contents
+     - Status analysis
+     - Times series visualisation
+     - Realisation by different attributes
+     
 3. IBA_Data_Process_for_Realisation_Prediction_v0.1.Rmd
-  - Description
-    - This script is for advanced data processing specifically for further ML purpose.
-  - Language: R
-  - Contents
-    - Mapping open data
-    - Mapping with industry insight
-    - Handling outliers
-    - Handling missing values
-    - Feature engineering
+   - Description
+     - This script is for advanced data processing specifically for further ML purpose.
+   - Language: R
+   - Contents
+     - Mapping open data
+     - Mapping with industry insight
+     - Handling outliers
+     - Handling missing values
+     - Feature engineering
+     
 4. Realised_opportunities_prediction_v0.1.ipynb
-  - Description
-  - Language: Python
-  - Contents
-    - Correlation analysis
-    - One-hot encoding
-    - Modelling
-      - Multi-layer perception
-      - Naive Bayes
-      - Decision tree
-      - Logistics regression
-    - Model evaluation
+   - Description
+    - This script will perform machine learning on the dataset processed by the third script.
+   - Language: Python
+   - Contents
+     - Correlation analysis
+     - One-hot encoding
+     - Modelling
+       - Multi-layer perception
+       - Naive Bayes
+       - Decision tree
+       - Logistics regression
+     - Model evaluation
