@@ -26,6 +26,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      - Table creation (e.g. skills required in a string -> analysis ready table structure)
      - New status creation by mapping to actual application process
      
+     
 2. IBA_Exploratory_Data_Analysis_v0.1.Rmd
    - Description
      - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
@@ -34,6 +35,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      - Status analysis
      - Times series visualisation
      - Realisation by different attributes
+     
      
 3. IBA_Data_Process_for_Realisation_Prediction_v0.1.Rmd
    - Description
@@ -45,6 +47,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      - Handling outliers
      - Handling missing values
      - Feature engineering
+     
      
 4. Realised_opportunities_prediction_v0.1.ipynb
    - Description
@@ -59,6 +62,8 @@ AIESEC currently has three main questions it would like you to answer using its 
        - Decision tree
        - Logistics regression
      - Model evaluation
+     
+     
 5. Bay Consulting_Final_compressed.pdf
    - Description
       - The deck used during the final presentation to the senior executives of AIESEC and the panel judges from different tier-1 consulting firms.
