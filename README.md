@@ -48,7 +48,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      
 4. Realised_opportunities_prediction_v0.1.ipynb
    - Description
-    - This script will perform machine learning on the dataset processed by the third script.
+     - This script will perform machine learning on the dataset processed by the third script.
    - Language: Python
    - Contents
      - Correlation analysis
@@ -59,3 +59,6 @@ AIESEC currently has three main questions it would like you to answer using its 
        - Decision tree
        - Logistics regression
      - Model evaluation
+5. Bay Consulting_Final_compressed.pdf
+   - Description
+      - The deck used during the final presentation to the senior executives of AIESEC and the panel judges from different tier-1 consulting firms.
