@@ -1,0 +1,250 @@
+---
+title: "IBA Case Comp"
+output: html_document
+---
+
+## loading the libraries
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(lubridate)
+```
+
+## loading the dataset
+```{r cars}
+app = as_tibble(read.csv("opportunity_applications_iba_challenge.csv", header = TRUE))
+opp = as.tibble(read.csv("opportunity_iba_challenge.csv", header = TRUE))
+lda = as.tibble(read.csv("lda_iba_challenge_team_11.csv", header = TRUE))
+```
+
+## Preliminary data examination - Opportunity Table
+```{r}
+##Take a quick glimpse of the actual data
+head(opp)
+
+##Look at the statistics of each variable
+summary(opp)
+
+##Look at the data type of each variable to locate potential data type conversion
+str(opp)
+```
+
+## Data Processing - opportunity table - change data type & filter
+```{r}
+###############Data Processing -- Opportunity###############
+###change all date type
+opp$created_at <- as.Date(opp$created_at)
+opp$applications_close_date <- as.Date(opp$applications_close_date)
+opp$earliest_start_date <- as.Date(opp$earliest_start_date)
+opp$latest_end_date <- as.Date(opp$latest_end_date)
+opp$matched_or_rejected_at <- as.Date(opp$matched_or_rejected_at)
+opp$experience_start_date <- as.Date(opp$experience_start_date)
+opp$experience_end_date <- as.Date(opp$experience_end_date)
+
+##filter out all the opportunity with status "draft"
+opp_trimmed <- opp %>% filter(status != "draft")
+##comments: There are 3 statuses: "open", "draft" and "removed". After internal discussion, draft is considered to be unfinished opportunity creation because many of the columns are null. So, we exclude this from our analysis.
+
+##filter out all the null name_region and null name_entity
+opp_trimmed <- opp_trimmed %>% filter(name_region != "")
+opp_trimmed %>% filter(name_entity == "")
+##comments: There are 9958 records with name_region which are null. We realise that when name_region is null, name_entity will be null too. Also, most of the null values associate with a draft status. Therefore, we remove those records which have null values.
+
+###Filter out the unique opportunity
+opportunities_table <- opp_trimmed[,c(2,3,4,5,6,7,8,9,10,11,18,19,20)] %>% unique
+##comments: After examination, it's found that the opportunity table is actually joined by application table for which the last 3 columns are related to application. Therefore, we remove the last 3 columns and get the unique opporunity for our further analysis.
+
+###Filter out the opportunities before 2000 and after 2017
+opportunities_table <- opportunities_table %>% filter(created_at < "2018-01-01", created_at > "2000-12-31")
+##comments: To perform time series analysis, we would like the data to be in exact one year. As both 2000 and 2018 data are not complete year, we will remove them for comparable result.
+
+##add month and year columns in opportunities_table
+#add month
+opportunities_table <- opportunities_table %>% mutate(ym = format(as.Date(opportunities_table$created_at), "%Y-%m"), d = "01") %>% unite(month_created, ym, d,  sep="-")
+opportunities_table[,"month_created"] <- opportunities_table[,"month_created"] %>% unlist %>% as.Date
+#add year
+opportunities_table <- opportunities_table %>% mutate(y = format(as.Date(opportunities_table$created_at), "%Y"),m = "01", d = "01") %>% unite(year_created, y, m, d,  sep="-")
+opportunities_table[,"year_created"] <- opportunities_table[,"year_created"] %>% unlist %>% as.Date
+##comments: additional attributes for further analysis
+
+###############Data Processing -- Opportunity###############
+```
+
+## Data Processing - opportunity table - Table Restruction
+## Description: This block aims to create new tables from 6 columns. They are a string of attributes which would be broken down into new tables for further analysis. The approach would be to expand the column into wide format, then further consolidate them into long format. Given the number of attributes with each serie of string, a limit of 10 is set. Below is a short demo of the transformation.
+```{r}
+###Demo of the transformation
+##select out the required skill columns
+demo <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_skill_req")] %>% head()
+print(demo)
+
+##transform the table into wide format with a limit of 10 skills
+demo_wide_format <- demo %>% separate(opp_skill_req, into = c("skill1","skill2","skill3","skill4","skill5","skill6","skill7","skill8","skill9","skill10"), sep = ",")
+print(demo_wide_format)
+
+##transform the table from wide format to long format
+demo_long_format <- demo_wide_format %>% gather(skill_no, skill, "skill1":"skill10")
+print(demo_long_format)
+
+##cleanse out the na rows
+demo_long_format <- demo_long_format %>% na.omit %>% filter(skill != "")
+print(demo_long_format)
+```
+
+```{r}
+###############Table Restruction -- Opportunity###############
+###unique opportunity
+#remove the last 3 columns and get the unique opportunities in the table
+cleaned_unique_opp <- opp_trimmed[,c(2,3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)] %>% unique
+##comments: After examination, it's found that the opportunity table is actually joined by application table for which the last 3 columns are related to application. Therefore, we remove the last 3 columns and get the unique opporunity for our further analysis.
+
+#add a new column year_created
+cleaned_unique_opp <- cleaned_unique_opp %>% mutate(year_created = year(created_at))
+#filter out the opportunities which lie before 2001 and beyond 2017
+cleaned_unique_opp <- cleaned_unique_opp %>% filter(year_created < 2018, year_created > 2000)
+##comments: To perform time series analysis, we would like the data to be in exact one year. As both 2000 and 2018 data are not complete year, we will remove them for comparable result.
+
+###Opportunity background required table
+opportunity_background_required_table <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_background_req")] %>% separate(opp_background_req, into = c("background1","background2","background3","background4","background5","background6","background7","background8","background9","background10"), sep = ",") %>% gather(background_no, background, "background1":"background10") %>% na.omit %>% filter(background != "")
+
+###Opportunity language required table
+opportunity_language_required_table <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_language_req")] %>% separate(opp_language_req, into = c("language1","language2","language3","language4","language5","language6","language7","language8","language9","language10"), sep = ",") %>% gather(language_no, language, "language1":"language10") %>% na.omit %>% filter(language != "")
+
+###Opportunity skill required table
+opportunity_skill_required_table <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_skill_req")] %>% separate(opp_skill_req, into = c("skill1","skill2","skill3","skill4","skill5","skill6","skill7","skill8","skill9","skill10"), sep = ",") %>% gather(skill_no, skill, "skill1":"skill10") %>% na.omit %>% filter(skill != "")
+
+###Opportunity background preference Table
+opportunity_background_preference_table <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_background_pref")] %>% separate(opp_background_pref, into = c("background1","background2","background3","background4","background5","background6","background7","background8","background9","background10"), sep = ",") %>% gather(background_no, background, "background1":"background10") %>% na.omit %>% filter(background != "")
+
+###Opportunity language preference Table
+opportunity_language_preference_table <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_language_pref")] %>% separate(opp_language_pref, into = c("language1","language2","language3","language4","language5","language6","language7","language8","language9","language10"), sep = ",") %>% gather(language_no, language, "language1":"language10") %>% na.omit %>% filter(language != "")
+
+###Opportunity skill preference Table
+opportunity_skill_preference_table <- cleaned_unique_opp %>% .[,c("opportunity_id","opp_skill_pref")] %>% separate(opp_skill_pref, into = c("skill1","skill2","skill3","skill4","skill5","skill6","skill7","skill8","skill9","skill10"), sep = ",") %>% gather(skill_no, skill, "skill1":"skill10") %>% na.omit %>% filter(skill != "") 
+
+###############Table Restruction -- Opportunity###############
+```
+
+## Data Processing - application table
+## Description: This table is the detailed information of each application. The major purpose of the block would be to create the new status by mapping the system record to the actual application process provided by AIESEC. The new status will be further used for funnel analysis as well as served as the target variable for the opportunity realization prediction.
+```{r}
+#############filter out th application##############
+##filter out the rows which could not find corresponding cleaned unique opportunities
+cleaned_app <- app %>% left_join(cleaned_unique_opp[,c("opportunity_id","created_at")], by = "opportunity_id") %>% filter(!is.na(created_at))
+##filter the application which is before 2000 and after 2017 to maintain data consistency with the opportunity table
+cleaned_app <- cleaned_app %>% filter(created_at < "2018-01-01", created_at > "2000-12-31")
+#############filter out th application##############
+
+
+#############Change data type##############
+cleaned_app$experience_start_date <- as.Date(cleaned_app$experience_start_date)
+cleaned_app$experience_end_date <- as.Date(cleaned_app$experience_end_date)
+cleaned_app$matched_or_rejected_at <- as.Date(cleaned_app$matched_or_rejected_at)
+cleaned_app$paid_at <- as.Date(cleaned_app$paid_at)
+#############Change data type##############
+
+
+###############Add new status###############
+##add new status based on different conditions
+cleaned_app %>% mutate(new_status = character()[seq_len(nrow(cleaned_app))])
+cleaned_app <- cleaned_app %>% mutate(new_status = 
+ifelse(status == "accepted" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before payment", 
+ifelse(status == "approval_broken" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date), "rejected", 
+ifelse((status == "approved" | status == "approved_ep_manager" | status == "approved_op_manager") & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date), "realized", 
+ifelse((status == "approved" | status == "approved_ep_manager" | status == "approved_op_manager") & an_status == "" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before signing AN", 
+ifelse(status == "declined" & an_status == "accepted" & is.na(paid_at) & !is.na(experience_start_date),"withdrawn before signing AN", 
+ifelse(status == "declined" & an_status == "accepted" & !is.na(paid_at) & !is.na(experience_start_date),"withdrawn after payment", 
+ifelse(status == "matched" & an_status == "" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before signing AN", 
+ifelse(status == "open" & an_status == "" & is.na(paid_at) & is.na(experience_start_date), "rejected", 
+ifelse(status == "open" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before payment", 
+ifelse(status == "realized", "realized", 
+ifelse(status == "rejected" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before payment", 
+ifelse(status == "rejected" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date), "withdrawn after payment", 
+ifelse(status == "rejected" & an_status != "accepted" & is.na(paid_at) & is.na(experience_start_date), "rejected",                  
+ifelse(status == "withdrawn" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date), "withdrawn after payment",  
+ifelse(status == "withdrawn" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before payment", 
+ifelse(status == "withdrawn" & an_status == "" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before signing AN",
+ifelse(status == "acceptance_broken" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "acceptance_broken" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "accepted" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "approval_broken" & an_status == "" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before signing AN",
+ifelse(status == "approval_broken" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "approval_broken" & an_status == "accepted" & !is.na(paid_at) & !is.na(experience_start_date), "withdrawn after payment",
+ifelse((status == "approved" | status == "approved_ep_manager" | status == "approved_op_manager") & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "declined" & an_status == "declined" & is.na(paid_at) & is.na(experience_start_date), "withdrawn before signing AN",
+ifelse(status == "matched" & an_status == "" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn before signing AN",
+ifelse(status == "matched" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "realization_broken" & an_status == "" & is.na(paid_at) & !is.na(experience_start_date),"withdrawn before signing AN",
+ifelse(status == "realization_broken" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "realization_broken" & an_status == "accepted" & is.na(paid_at) & !is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "realization_broken" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "realization_broken" & an_status == "accepted" & !is.na(paid_at) & !is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "rejected" & an_status == "" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "withdrawn" & an_status == "accepted" & !is.na(paid_at) & !is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "declined" & an_status == "accepted" & is.na(paid_at) & is.na(experience_start_date),"withdrawn before payment",
+ifelse(status == "matched" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "open" & an_status == "" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "open" & an_status == "accepted" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",
+ifelse(status == "withdrawn" & an_status == "" & !is.na(paid_at) & is.na(experience_start_date),"withdrawn after payment",""
+)))))))))))))))))))))))))))))))))))))))
+###############Add new status###############
+##comments: The new status is mapped based on the current application process and a myraid of status in the record. The new status is further to be processed for the funnel analysis as well as served as the target variable of the opportunity realization prediction.
+
+```
+
+## Data Processing - lda table
+```{r}
+## filter out the lda which has no corresponding opportunity
+cleaned_lda <- lda %>% left_join(opportunities_table, by = "opportunity_id") %>% filter(!is.na(name_region))
+```
+
+```{r}
+cleaned_app %>% select(status, an_status, paid_at, experience_start_date, new_status) %>% mutate(paid_at = !is.na(paid_at), experience_start_date = !is.na(experience_start_date)) %>% group_by(status, an_status, paid_at, experience_start_date, new_status) %>% count %>% arrange(status)
+```
+
+##add new attributes for opportunity table
+## Description: Joining back the 6 newly created tables and new status to the opportunity table.
+```{r}
+##add month and year
+opportunities_table <- opportunities_table %>% mutate(year_created_yyyy = year(created_at), month_created_mm = month(created_at))
+
+##add counts of skill/language/background for required and preferred
+opportunities_table <- opportunities_table %>% left_join((opportunity_background_required_table %>% group_by(opportunity_id) %>% count %>% rename(background_r_count = n)),by = "opportunity_id")
+opportunities_table <- opportunities_table %>% left_join((opportunity_background_preference_table %>% group_by(opportunity_id) %>% count %>% rename(background_p_count = n)),by = "opportunity_id")
+opportunities_table <- opportunities_table %>% left_join((opportunity_skill_required_table %>% group_by(opportunity_id) %>% count %>% rename(skill_r_count = n)),by = "opportunity_id")
+opportunities_table <- opportunities_table %>% left_join((opportunity_skill_preference_table %>% group_by(opportunity_id) %>% count %>% rename(skill_p_count = n)),by = "opportunity_id")
+opportunities_table <- opportunities_table %>% left_join((opportunity_language_required_table %>% group_by(opportunity_id) %>% count %>% rename(language_r_count = n)),by = "opportunity_id")
+opportunities_table <- opportunities_table %>% left_join((opportunity_language_preference_table %>% group_by(opportunity_id) %>% count %>% rename(language_p_count = n)),by = "opportunity_id")
+
+##remove na values for the background/skill/language
+opportunities_table$background_r_count <- opportunities_table$background_r_count %>% replace_na(0)
+opportunities_table$background_p_count <- opportunities_table$background_p_count %>% replace_na(0)
+opportunities_table$skill_r_count <- opportunities_table$skill_r_count %>% replace_na(0)
+opportunities_table$skill_p_count <- opportunities_table$skill_p_count %>% replace_na(0)
+opportunities_table$language_r_count <- opportunities_table$language_r_count %>% replace_na(0)
+opportunities_table$language_p_count <- opportunities_table$language_p_count %>% replace_na(0)
+
+##add new status and realized/not realised
+opportunities_table <- opportunities_table %>% left_join((cleaned_app %>% select(opportunity_id, new_status) %>% filter(new_status == "realized") %>% unique), by = "opportunity_id") %>% mutate(realized = !is.na(new_status)) %>% ungroup
+opportunities_table %>% group_by(realized) %>% count
+opportunities_table %>% arrange(created_at)
+cleaned_app
+##comments: This is our target variable to indicate whether each opportunity is realized.
+```
+
+##Export the tables as csv
+```{r}
+write.csv(opportunities_table, file = "opportunities_table_v1.csv")
+# write.csv(opportunity_background_required_table, file = "opportunity_background_required_table_v1.csv")
+# write.csv(opportunity_language_required_table, file = "opportunity_language_required_table_v1.csv")
+# write.csv(opportunity_skill_required_table, file = "opportunity_skill_required_table_v1.csv")
+# write.csv(opportunity_background_preference_table, file = "opportunity_background_preference_table_v1.csv")
+# write.csv(opportunity_language_preference_table, file = "opportunity_language_preference_table_v1.csv")
+# write.csv(opportunity_skill_preference_table, file = "opportunity_skill_preference_table_v1.csv")
+# write.csv(cleaned_app, file = "cleaned_application_table_v1.csv")
+# write.csv(cleaned_lda, file = "cleaned_lda.csv")
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
