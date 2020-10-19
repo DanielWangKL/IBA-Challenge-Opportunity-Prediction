@@ -95,7 +95,7 @@ Logistics regression: 65.97%
 By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
 
 # Table of contents
-**1. IBA_Basic_Data_Processing_v0.1.Rmd**
+**1. IBA_Basic_Data_Processing_v0.1.html**
    - Description
      - This script provides basic data processing for the opportunity and application tables. The processed document is further distributed for other teammates analysis and the ML feature engineering.
    - Language: R
@@ -107,7 +107,7 @@ By looking at the training results, we can observe that the model doesn't suffer
      - New status creation by mapping to actual application process
      
      
-**2. IBA_Exploratory_Data_Analysis_v0.1.Rmd**
+**2. IBA_Exploratory_Data_Analysis_v0.1.html**
    - Description
      - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
    - Language: R
@@ -117,7 +117,7 @@ By looking at the training results, we can observe that the model doesn't suffer
      - Realisation by different attributes
      
      
-**3. IBA_Data_Process_for_Realisation_Prediction_v0.1.Rmd**
+**3. IBA_Data_Process_for_Realisation_Prediction_v0.1.html**
    - Description
      - This script is for advanced data processing specifically for further ML purpose.
    - Language: R
