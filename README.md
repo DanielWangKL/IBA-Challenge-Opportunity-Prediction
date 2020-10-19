@@ -26,7 +26,35 @@ Each row corresponds to an exchange participant application on an opportunity.
 
 # Data Insights - EDA
 
+Observations
 
+The number of "Global Volunteer" and "Global Entrepreneur" increases significantly. The number of "Global Talent" keeps at a moderate pace.
+
+comments
+
+We can partner with more startups for more opportunities in "Global Entrepreneur" programme as we can see there is a upward trend starting from 2015. We can keep explore opportunities in "Global Volunteer".
+
+
+
+Observations
+
+Middle East and Africa and Asia Pacific contribute a significant amount in the increase of the opportunities
+
+There is a trend that opportunities will usually peak after the start of the year and after the mid-year.
+
+Comments
+
+We can keep explore the opportunities in Asia Pacific and Middle East and Africa.
+
+
+Observations 
+
+Most people apply for Europe opportunities, followed by America, Asia Pacific and Middle East and Africa.
+
+
+Comments
+
+global volunteer has the highest realized rate followed by global talent and entreprenuer
 
 # Modelling Results
 For this binary classification problem, majority classifer is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
