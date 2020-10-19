@@ -16,7 +16,7 @@ AIESEC currently has three main questions it would like you to answer using its 
 3. How to define and measure AIESEC impact on exchange participants leadership?"
 
 # Table of contents
-1. IBA_Basic_Data_Processing_v0.1.Rmd
+**1. IBA_Basic_Data_Processing_v0.1.Rmd**
    - Description
      - This script provides basic data processing for the opportunity and application tables. The processed document is further distributed for other teammates analysis and the ML feature engineering.
    - Language: R
@@ -27,7 +27,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      - New status creation by mapping to actual application process
      
      
-2. IBA_Exploratory_Data_Analysis_v0.1.Rmd
+**2. IBA_Exploratory_Data_Analysis_v0.1.Rmd**
    - Description
      - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
    - Language: R
@@ -37,7 +37,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      - Realisation by different attributes
      
      
-3. IBA_Data_Process_for_Realisation_Prediction_v0.1.Rmd
+**3. IBA_Data_Process_for_Realisation_Prediction_v0.1.Rmd**
    - Description
      - This script is for advanced data processing specifically for further ML purpose.
    - Language: R
@@ -49,7 +49,7 @@ AIESEC currently has three main questions it would like you to answer using its 
      - Feature engineering
      
      
-4. Realised_opportunities_prediction_v0.1.ipynb
+**4. Realised_opportunities_prediction_v0.1.ipynb**
    - Description
      - This script will perform machine learning on the dataset processed by the third script.
    - Language: Python
@@ -64,6 +64,6 @@ AIESEC currently has three main questions it would like you to answer using its 
      - Model evaluation
      
      
-5. Bay Consulting_Final_compressed.pdf
+**5. Bay Consulting_Final_compressed.pdf**
    - Description
       - The deck used during the final presentation to the senior executives of AIESEC and the panel judges from different tier-1 consulting firms.
