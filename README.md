@@ -8,12 +8,33 @@ This repository will present the end-to-end machine learning process for the pro
 The whole process will be a combination of R and Python. Since I had a stronger knowledge in business analytics with R(dplyr, ggplot) and machine learning knoweldge with Python (Keras, scikit-learn) by then, I just used the corresponding tools to quickly prototype the model.
 
 # Background
-"In January 2019, AIESEC has decided to use the large amount of data it has accumulated over time to help it become more efficient in realizing its mission and to guide its numerical transformation. However, AIESEC does not currently have enough data scientists to assist it on this task. As a result, AIESEC has approached your firm to help them explore and generate value from their data given their current challenges. Your company specializes in business translation for data science and your team of experts has been hired to help AIESEC find solutions using the data they have at their disposal.
+"In January 2019, AIESEC has decided to use the large amount of data it has accumulated over time to help it become more efficient in realizing its mission and to guide its numerical transformation. However, AIESEC does not currently have enough data scientists to assist it on this task. As a result, AIESEC has approached your firm to help them explore and generate value from their data given their current challenges. Your company specializes in business translation for data science and your team of experts has been hired to help AIESEC find solutions using the data they have at their disposal."
 
 AIESEC currently has three main questions it would like you to answer using its data:
 1. How to increase the number of exchange opportunities posted by organizations on aiesec.org?
 2. How to increase the proportion of posted opportunities that find a suited candidate (realized traineeships)?
-3. How to define and measure AIESEC impact on exchange participants leadership?"
+3. How to define and measure AIESEC impact on exchange participants leadership?
+
+# Dataset
+Opportunities table
+Each row corresponds to an opportunity posted on aiesec.org. An opportunity can correspond to several similar internships.
+
+Opportunities application table
+Each row corresponds to an exchange participant application on an opportunity.
+
+# Data Insights - EDA
+
+# Modelling Results
+For this binary classification problem, majority classifer is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
+
+After training with 4 models, deep learning yields the highest accuracy of 68.95%.
+
+Accuracy
+Deep Learning: 68.95%
+Naive Bayes: 62.11%
+Decision Tree: 68.48%
+Logistics regression: 65.97%
+
 
 # Table of contents
 **1. IBA_Basic_Data_Processing_v0.1.Rmd**
