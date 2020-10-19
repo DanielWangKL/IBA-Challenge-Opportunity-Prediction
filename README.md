@@ -1,5 +1,5 @@
 # International Business Analytics (IBA) Challenge - Opportunity Realization Prediction
-Participants of IBA are required to propose recommendations on how to leverage the wealth of data in AIESEC for its digital transformation journey to achieve its business goals.
+Participants of IBA Challenge are required to propose recommendations on how to leverage the wealth of data in AIESEC for its digital transformation journey to achieve its business goals.
 
 One of the recommendation will be leveraging machine learning to quantify the likelihood of realisation of each opportunity to allow the staff to optimise their marketing effort. Also, this model could be leveraged to enhance the intelligence of the online platform when promoting opportunities. This is to answer the second question from AIESEC which is listed in the background below.
 
@@ -105,8 +105,7 @@ By looking at the training results, we can observe that the model doesn't suffer
      - Data Cleansing (e.g. NA, Null)
      - Table creation (e.g. skills required in a string -> analysis ready table structure)
      - New status creation by mapping to actual application process
-     
-     
+ 
 **2. IBA_Exploratory_Data_Analysis_v0.1.html**
    - Description
      - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
@@ -115,7 +114,6 @@ By looking at the training results, we can observe that the model doesn't suffer
      - Status analysis
      - Times series visualisation
      - Realisation by different attributes
-     
      
 **3. IBA_Data_Process_for_Realisation_Prediction_v0.1.html**
    - Description
@@ -127,7 +125,6 @@ By looking at the training results, we can observe that the model doesn't suffer
      - Handling outliers
      - Handling missing values
      - Feature engineering
-     
      
 **4. Realised_opportunities_prediction_v0.1.ipynb**
    - Description
@@ -142,8 +139,7 @@ By looking at the training results, we can observe that the model doesn't suffer
        - Decision tree
        - Logistics regression
      - Model evaluation
-     
-     
+
 **5. Bay Consulting_Final_compressed.pdf**
    - Description
       - The deck used during the final presentation to the senior executives of AIESEC and the panel judges from different tier-1 consulting firms.
