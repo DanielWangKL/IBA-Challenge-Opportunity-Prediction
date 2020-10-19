@@ -1,7 +1,7 @@
 # International Business Analytics (IBA) Challenge - Opportunity Realization Prediction
-Participants of IBA are required to propose recommendations on how to leverage the wealth of data in AIESEC to achieve its business goal.
+Participants of IBA are required to propose recommendations on how to leverage the wealth of data in AIESEC for its digital transformation journey to achieve its business goals.
 
-One of the recommendation will be leveraging binary classification model to quantify the likelihood of realisation of each opportunity to allow the staff to optimise their marketing effort. Also, this model could also be leveraged to enhance the intelligence of the online platform when promoting opportunities. This is to answer the second question from AIESEC which is listed in the background below.
+One of the recommendation will be leveraging machine learning to quantify the likelihood of realisation of each opportunity to allow the staff to optimise their marketing effort. Also, this model could be leveraged to enhance the intelligence of the online platform when promoting opportunities. This is to answer the second question from AIESEC which is listed in the background below.
 
 This repository will present the end-to-end machine learning process for the proof-of-concept of this recommendation.
 
@@ -15,6 +15,8 @@ AIESEC currently has three main questions it would like you to answer using its 
 2. How to increase the proportion of posted opportunities that find a suited candidate (realized traineeships)?
 3. How to define and measure AIESEC impact on exchange participants leadership?
 
+The second question translates to a binary classification problem of whether an opportunity is predicted to be realized or not.
+
 # Dataset
 Opportunities table
 Each row corresponds to an opportunity posted on aiesec.org. An opportunity can correspond to several similar internships.
@@ -24,17 +26,27 @@ Each row corresponds to an exchange participant application on an opportunity.
 
 # Data Insights - EDA
 
+
+
 # Modelling Results
 For this binary classification problem, majority classifer is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
 
 After training with 4 models, deep learning yields the highest accuracy of 68.95%.
 
-Accuracy
+**Accuracy Score**
+
 Deep Learning: 68.95%
+
 Naive Bayes: 62.11%
+
 Decision Tree: 68.48%
+
 Logistics regression: 65.97%
 
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Deep_Learning_Accuracy.png)
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Deep_Learning_Loss.png)
+
+By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
 
 # Table of contents
 **1. IBA_Basic_Data_Processing_v0.1.Rmd**
@@ -43,7 +55,8 @@ Logistics regression: 65.97%
    - Language: R
    - Contents
      - Data type conversion (e.g. factor -> date)
-     - Data filtering (e.g. NA, Null)
+     - Data filtering (e.g. standardized time range)
+     - Data Cleansing (e.g. NA, Null)
      - Table creation (e.g. skills required in a string -> analysis ready table structure)
      - New status creation by mapping to actual application process
      
