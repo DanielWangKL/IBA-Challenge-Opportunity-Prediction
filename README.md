@@ -17,6 +17,10 @@ AIESEC currently has three main questions it would like you to answer using its 
 
 The second question translates to a binary classification problem of whether an opportunity is predicted to be realized or not.
 
+# Problem Identification
+
+After inteviewing with the local AIESEC committee, we found out that the local committee will be selected yearly and they will usually be composed of the year 2 students. When they are making decisions on which opportunity to promote, it will be based on their one year experience in AIESEC. Therefore, the machine learning approach is recommended to leverage the 15 years+ data to allow the local committee to make informed data-driven decisions.
+
 # Dataset
 **Opportunities table**
 
@@ -93,6 +97,10 @@ Logistics regression: 65.97%
 
 
 By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
+
+**Model Usage**
+
+Sigmoid function is used as the output function which the range will be 0-1. The score will be served to measure the attractiveness of each opportunity and the local marketing team could leverage this model to prioritise their marketing efforts with 15 years+ of data.
 
 # Table of contents
 **1. IBA_Basic_Data_Processing_v0.1.html**
