@@ -34,7 +34,7 @@ Each row corresponds to an exchange participant application on an opportunity.
 
 The number of "Global Volunteer" and "Global Entrepreneur" increases significantly. The number of "Global Talent" keeps at a moderate pace.
 
-**comments**
+**Comments**
 
 We can partner with more startups for more opportunities in "Global Entrepreneur" programme as we can see there is a upward trend starting from 2015. We can keep explore opportunities in "Global Volunteer".
 
