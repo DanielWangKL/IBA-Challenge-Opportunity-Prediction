@@ -18,43 +18,60 @@ AIESEC currently has three main questions it would like you to answer using its 
 The second question translates to a binary classification problem of whether an opportunity is predicted to be realized or not.
 
 # Dataset
-Opportunities table
+**Opportunities table**
+
 Each row corresponds to an opportunity posted on aiesec.org. An opportunity can correspond to several similar internships.
 
-Opportunities application table
+**Opportunities application table**
+
 Each row corresponds to an exchange participant application on an opportunity.
 
 # Data Insights - EDA
 
-Observations
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Opportunity_by_programmeid.png)
+
+**Observations**
 
 The number of "Global Volunteer" and "Global Entrepreneur" increases significantly. The number of "Global Talent" keeps at a moderate pace.
 
-comments
+**comments**
 
 We can partner with more startups for more opportunities in "Global Entrepreneur" programme as we can see there is a upward trend starting from 2015. We can keep explore opportunities in "Global Volunteer".
 
 
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Opportunity_by_region.png)
 
-Observations
+**Observations**
 
-Middle East and Africa and Asia Pacific contribute a significant amount in the increase of the opportunities
+Middle East and Africa and Asia Pacific contribute a significant amount in the increase of the opportunities.
 
 There is a trend that opportunities will usually peak after the start of the year and after the mid-year.
 
-Comments
+**Comments**
 
-We can keep explore the opportunities in Asia Pacific and Middle East and Africa.
-
-
-Observations 
-
-Most people apply for Europe opportunities, followed by America, Asia Pacific and Middle East and Africa.
+As both Asia Pacific and Middle East and Africa are experiencing strong growth now, we can keep explore the opportunities in the regions.
 
 
-Comments
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/application_by_region.png)
 
-global volunteer has the highest realized rate followed by global talent and entreprenuer
+**Observations**
+
+Most people apply for Europe opportunities, followed by America, Asia Pacific and Middle East and Africa. Across the regions, the trends are similar.
+
+**Comments**
+
+This aligns to my general understanding as this correlates to the popularity of travelling for each region.
+
+
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/realization_by_programmeid.png)
+
+**Observations**
+
+global volunteer has the highest realized rate followed by global talent and entreprenuer.
+
+**Comments**
+
+From the data insight, there are two potential directions for improvements. On the one hand, increasing the number of global volunteer opportunities will yield more realizaed opportunities. On the other hand, the marketing effort could be put in promoting the other two programmes as high quality experience to students to improve the realization rate.
 
 # Modelling Results
 For this binary classification problem, majority classifer is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
@@ -71,8 +88,9 @@ Decision Tree: 68.48%
 
 Logistics regression: 65.97%
 
-![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Deep_Learning_Accuracy.png)
-![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Deep_Learning_Loss.png)
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Accuracy.png)
+![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Loss.png)
+
 
 By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
 
