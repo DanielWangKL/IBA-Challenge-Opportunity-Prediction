@@ -22,6 +22,7 @@ The second question translates to a binary classification problem of whether an 
 After inteviewing with the local AIESEC committee, we found out that the local committee will be selected yearly and they will usually be composed of the year 2 students. When they are making decisions on which opportunity to promote, it will be based on their one year experience in AIESEC. Therefore, the machine learning approach is recommended to leverage the 15 years+ data to allow the local committee to make informed data-driven decisions.
 
 # Dataset
+
 **Opportunities table**
 
 Each row corresponds to an opportunity posted on aiesec.org. An opportunity can correspond to several similar internships.
@@ -31,6 +32,10 @@ Each row corresponds to an opportunity posted on aiesec.org. An opportunity can 
 Each row corresponds to an exchange participant application on an opportunity.
 
 # Data Insights - EDA
+
+Some interesting insights from the opportunities and applications tables.
+
+### **Opportunities**
 
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Opportunity_by_programmeid.png)
 
@@ -55,6 +60,7 @@ There is a trend that opportunities will usually peak after the start of the yea
 
 As both Asia Pacific and Middle East and Africa are experiencing strong growth now, we can keep explore the opportunities in the regions.
 
+### **Application**
 
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/application_by_region.png)
 
@@ -66,6 +72,7 @@ Most people apply for Europe opportunities, followed by America, Asia Pacific an
 
 This aligns to my general understanding as this correlates to the popularity of travelling for each region.
 
+### **Realization**
 
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/realization_by_programmeid.png)
 
