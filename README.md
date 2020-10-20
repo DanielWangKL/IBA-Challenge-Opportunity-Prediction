@@ -78,9 +78,15 @@ global volunteer has the highest realized rate followed by global talent and ent
 From the data insight, there are two potential directions for improvements. On the one hand, increasing the number of global volunteer opportunities will yield more realizaed opportunities. On the other hand, the marketing effort could be put in promoting the other two programmes as high quality experience to students to improve the realization rate.
 
 # Modelling Results
-For this binary classification problem, majority classifer is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
+For this binary classification problem, majority classifier is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
 
 After training with 4 models, deep learning yields the highest accuracy of 68.95%.
+
+**Model Basics**
+
+Data Set Shape: (381484, 160)
+Regularization: L2 and Dropout
+Activation Function: Hidden Layer: Relu, Output Layer: Sigmoid
 
 **Hyperparameter Tuning**
 
