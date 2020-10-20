@@ -142,6 +142,8 @@ Flask API could be further developed to enable a more interactive and realistic 
 **1. IBA_Basic_Data_Processing_v0.1.html**
    - Description
      - This script provides basic data processing for the opportunity and application tables. The processed document is further distributed for other teammates analysis and the ML feature engineering.
+   - Rendered Markdown
+      - https://htmlpreview.github.io/?https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/1.%20IBA_Basic_Data_Processing_v0.1.html
    - Language: R
    - Contents
      - Data type conversion (e.g. factor -> date)
@@ -153,6 +155,8 @@ Flask API could be further developed to enable a more interactive and realistic 
 **2. IBA_Exploratory_Data_Analysis_v0.1.html**
    - Description
      - This script provides a descriptive analytics and insights on the trends and composition of the data after the basic data processing.
+   - Rendered Markdown
+      - https://htmlpreview.github.io/?https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/2.%20IBA_Exploratory_Data_Analysis_v0.1.html
    - Language: R
    - Contents
      - Status analysis
@@ -162,6 +166,8 @@ Flask API could be further developed to enable a more interactive and realistic 
 **3. IBA_Data_Process_for_Realisation_Prediction_v0.1.html**
    - Description
      - This script is for advanced data processing specifically for further ML purpose.
+   -  Rendered Markdown
+      - https://htmlpreview.github.io/?https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/3.%20IBA_Data_Process_for_Realisation_Prediction_v0.1.html
    - Language: R
    - Contents
      - Mapping open data
