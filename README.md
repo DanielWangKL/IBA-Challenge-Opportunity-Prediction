@@ -95,6 +95,11 @@ Logistics regression: 65.97%
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Accuracy.png)
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Loss.png)
 
+**Confusion Matrix**
+
+**ROC Curve**
+
+**Hyperparameter Tuning**
 
 By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
 
