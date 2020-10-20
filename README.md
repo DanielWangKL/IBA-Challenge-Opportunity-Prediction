@@ -124,9 +124,19 @@ By looking at the training results, we can observe that the model doesn't suffer
 
 Sigmoid function is used as the output function which the range will be 0-1. The score will be served to measure the attractiveness of each opportunity and the local marketing team could leverage this model to prioritise their marketing efforts with 15 years+ of data.
 
-# Model Enhancement
+# Future Enhancement
 
+**Status Mapping Enhancement**
 
+For the current opportunity status creation, it's embedded into the program logic. This is a quick and dirty way of data processing but not the most flexible practice. After working for a large scale ETL project, the best approach would be setting aside the frequently udpated mapping as separate configuration tables to allow flexiblity and expandability to the program design.
+
+**Backgrounds, Skills and Languages Processing**
+
+Due to time constraint, only the required background is processed for modelling. The unstructured nature of the features makes it hard for a quick prototype. Yet, the skills and languages are important features which could help classify the uniqueness of each opportunity and hence improve the model performance.
+
+**Web API Deployment**
+
+Flask API could be further developed to enable a more interactive and realistic POC to showcase to the clients on how the model could help with the current operation.
 
 # Table of contents
 **1. IBA_Basic_Data_Processing_v0.1.html**
