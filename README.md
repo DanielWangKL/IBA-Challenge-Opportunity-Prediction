@@ -85,10 +85,14 @@ After training with 4 models, deep learning yields the highest accuracy of 68.95
 **Model Basics**
 
 Data Set Shape: (381484, 160)
+
 Regularization: L2 and Dropout
+
 Activation Function: Hidden Layer: Relu, Output Layer: Sigmoid
 
 **Hyperparameter Tuning**
+
+TBC
 
 **Accuracy Score**
 
