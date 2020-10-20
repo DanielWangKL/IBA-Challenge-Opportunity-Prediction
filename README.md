@@ -82,6 +82,8 @@ For this binary classification problem, majority classifer is taken as a baselin
 
 After training with 4 models, deep learning yields the highest accuracy of 68.95%.
 
+**Hyperparameter Tuning**
+
 **Accuracy Score**
 
 Deep Learning: 68.95%
@@ -95,17 +97,19 @@ Logistics regression: 65.97%
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Accuracy.png)
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Loss.png)
 
+By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
+
 **Confusion Matrix**
 
 **ROC Curve**
 
-**Hyperparameter Tuning**
-
-By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
-
 **Model Usage**
 
 Sigmoid function is used as the output function which the range will be 0-1. The score will be served to measure the attractiveness of each opportunity and the local marketing team could leverage this model to prioritise their marketing efforts with 15 years+ of data.
+
+# Model Enhancement
+
+
 
 # Table of contents
 **1. IBA_Basic_Data_Processing_v0.1.html**
