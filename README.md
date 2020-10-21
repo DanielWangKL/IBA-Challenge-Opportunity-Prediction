@@ -241,6 +241,7 @@ Flask API could be further developed to enable a more interactive and realistic 
    - Contents
      - Correlation analysis
      - One-hot encoding
+     - Hyperparameter tuning
      - Modelling
        - Multi-layer perception
        - Naive Bayes
@@ -250,4 +251,4 @@ Flask API could be further developed to enable a more interactive and realistic 
 
 **5. Bay Consulting_Final_compressed.pdf**
    - Description
-      - The deck used during the final presentation to the senior executives of AIESEC and the panel judges from different tier-1 consulting firms.
+      - The deck used during the final presentation to the senior executives of AIESEC and the panel judges from different consulting firms.
