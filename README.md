@@ -131,6 +131,8 @@ The best performing configuration is used for training the model.
 
 {'batch_size': 256, 'dropout': 0.5, 'epochs': 20, 'init_mode': 'glorot_normal'}
 
+**Overfitting Problem**
+
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Accuracy.PNG)
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Loss.PNG)
 
