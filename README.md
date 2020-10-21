@@ -105,6 +105,8 @@ Activation Function: Hidden Layer: Relu, Output Layer: Sigmoid
 
 Only a sub-set (50000) of the training set is selected to perform hyperparameter tuning.
 
+-------------------------------------------------------------------------------------------------
+
 batch_size = [32, 64, 128, 256]
 
 epochs = [10, 20]
@@ -112,6 +114,8 @@ epochs = [10, 20]
 init_mode = ['uniform', 'normal', 'glorot_normal', 'glorot_uniform']
 
 dropout = [0.1, 0.3, 0.5]
+
+-------------------------------------------------------------------------------------------------
 
 The best performing configuration is used for training the model.
 
