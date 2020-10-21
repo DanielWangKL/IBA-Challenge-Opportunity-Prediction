@@ -142,6 +142,8 @@ By looking at the training results, we can observe that the model doesn't suffer
 
 Peform K-fold cross validation to ensure the model is not biased due to random split of the dataset. The test set is set aside for the final model evaluation.
 
+-------------------------------------------------------------------------------------------------
+
 accuracy: 68.96%
 
 accuracy: 69.07%
@@ -163,6 +165,10 @@ accuracy: 69.26%
 accuracy: 68.57%
 
 68.92% (+/- 0.25%)
+
+-------------------------------------------------------------------------------------------------
+
+The 10 folds result in similar scores which validates the model is not biased.
 
 **Confusion Matrix**
 
