@@ -45,7 +45,7 @@ The number of "Global Volunteer" and "Global Entrepreneur" increases significant
 
 **Comments**
 
-We can partner with more startups for more opportunities in "Global Entrepreneur" programme as we can see there is a upward trend starting from 2015. We can keep explore opportunities in "Global Volunteer".
+We can partner with more startups for more opportunities in "Global Entrepreneur" programme as we can see there is a upward trend starting from 2015. We can keep exploring opportunities in "Global Volunteer".
 
 
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Opportunity_by_region.png)
