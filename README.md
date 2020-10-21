@@ -87,7 +87,17 @@ From the data insight, there are two potential directions for improvements. On t
 # Modelling Results
 For this binary classification problem, majority classifier is taken as a baseline for benchmarking and the baseline accuracy is 59.7%.
 
-After training with 4 models, deep learning yields the highest accuracy of 68.7%.
+After training with 4 models, deep learning yields the highest accuracy of 68.7%. The below study will focus on the deep learning model.
+
+**Accuracy Score**
+
+Deep Learning: 68.7%
+
+Naive Bayes: 62.11%
+
+Decision Tree: 68.48%
+
+Logistics regression: 65.97%
 
 **Model Basics**
 
@@ -120,16 +130,6 @@ dropout = [0.1, 0.3, 0.5]
 The best performing configuration is used for training the model.
 
 {'batch_size': 256, 'dropout': 0.5, 'epochs': 20, 'init_mode': 'glorot_normal'}
-
-**Accuracy Score**
-
-Deep Learning: 68.7%
-
-Naive Bayes: 62.11%
-
-Decision Tree: 68.48%
-
-Logistics regression: 65.97%
 
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Accuracy.PNG)
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Loss.PNG)
