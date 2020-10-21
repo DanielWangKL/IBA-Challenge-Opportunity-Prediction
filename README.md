@@ -136,6 +136,32 @@ Logistics regression: 65.97%
 
 By looking at the training results, we can observe that the model doesn't suffer from overfitting problem since both the accuracy and loss don't bounce back.
 
+**K-Fold Cross Validation**
+
+Peform K-fold cross validation to ensure the model is not biased due to random split of the dataset. The test set is set aside for the final model evaluation.
+
+accuracy: 68.96%
+
+accuracy: 69.07%
+
+accuracy: 69.01%
+
+accuracy: 68.37%
+
+accuracy: 69.17%
+
+accuracy: 68.95%
+
+accuracy: 68.98%
+
+accuracy: 68.90%
+
+accuracy: 69.26%
+
+accuracy: 68.57%
+
+68.92% (+/- 0.25%)
+
 **Confusion Matrix**
 
 ![alt text](https://github.com/klwangaa/IBA-Challenge-Opportunity-Prediction/blob/main/Graphics/Deep_Learning_Confusion_Matrix.PNG)
